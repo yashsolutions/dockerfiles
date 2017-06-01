@@ -1,0 +1,32 @@
+ALERT InstanceDown
+  IF up == 0
+  FOR 5m
+  LABELS { severity = "page" }
+  ANNOTATIONS {
+    summary = "Instance {{ $labels.instance }} down",
+    description = "{{ $labels.instance }} of job {{ $labels.job }} has been down for more than 5 minutes.",
+  }
+
+ALERT filesystem_threshold_exceeded
+  IF node_filesystem_avail{job='prometheus',mountpoint='/'} / node_filesystem_size{job='prometheus'} * 100 < THRESHOLD_FS
+  ANNOTATIONS {
+    summary = "Instance {{ $labels.instance }} filesystem usage is dangerously high",
+    description = "This device's filesystem usage has exceeded the threshold with a value of {{ $value }}.",
+  }
+
+ALERT NodeFilesystemUsageHigh
+
+IF node_filesystem_free{job='prometheus',filesystem!~"^/run(/|$)"} / node_filesystem_size{job='prometheus'} < 0.7
+      ANNOTATIONS {
+        summary = "Node filesystem usage is high",
+        description = "Node {{ $labels.instance }}'s filesystem {{ $labels.filesystem }} has less than 20% disk space remaining."
+  }
+  
+  
+ALERT cpu_threshold_exceeded
+  IF (100 * (1 - avg by(instance)(irate(node_cpu{job='prometheus',mode='idle'}[5m])))) > THRESHOLD_CPU
+  ANNOTATIONS {
+    summary = "Instance {{ $labels.instance }} CPU usage is dangerously high",
+    description = "This device's cpu usage has exceeded the threshold with a value of {{ $value }}.",
+  }  
+

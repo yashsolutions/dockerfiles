@@ -1,0 +1,15 @@
+global:
+  smtp_smarthost: 'smtp.sendgrid.net:25'
+  smtp_from: 'bot@srkay.com '
+  smtp_auth_username: 'azure_3bfa9aee4a3dd96c8568b0936f42320f@azure.com'
+  smtp_auth_password: 'friksl2t6l'
+
+route:
+  group_wait: 30s
+  group_interval: 5m
+  repeat_interval: 20h
+  receiver: DevOps
+receivers:
+- name: 'DevOps'
+  email_configs:
+  - to: 'foram.kapadia@aptitudelabs.com'

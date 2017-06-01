@@ -1,0 +1,6 @@
+server.host: "0.0.0.0"
+server.port: 8003
+elasticsearch.url: "http://internal-es.ip:80"
+xpack.monitoring.enabled: false
+xpack.security.enabled: false
+xpack.graph.enabled: false
