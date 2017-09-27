@@ -14,7 +14,7 @@ class MainHandler(tornado.web.RequestHandler):
             for ip in servers:
                 r = requests.get("http://" + ip + ":4243/services")
                 services.extend(json.loads(r.text))
-            r_server = redis.Redis(host='ansible.ip', db=2)
+            r_server = redis.Redis(host='internal-redis.ovmdvp.0001.use2.cache.amazonaws.com', db=2)
         except Exception as e:
             print e
 
