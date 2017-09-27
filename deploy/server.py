@@ -131,10 +131,9 @@ class MainHandler(tornado.web.RequestHandler):
 	    output += "<option vaule=\"" + env + "\">" + env + "</option>"
 	output += "</select> <input type=submit value=deploy></form>"
 	output += "<table><tr><th style=\"white-space:nowrap;text-align:left\">service name</th>\
-        <th style=\"white-space:nowrap;text-align:left\">qa</th>\
         <th style=\"white-space:nowrap;text-align:left\">dev</th>\
         <th style=\"white-space:nowrap;text-align:left\">stage</th>\
-        <th style=\"white-space:nowrap;text-align:left\">internal</th>\
+        <th style=\"white-space:nowrap;text-align:left\">system</th>\
         <th style=\"white-space:nowrap;text-align:left\">prod</th>\
         </tr>"
 
