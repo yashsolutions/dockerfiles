@@ -24,7 +24,7 @@ class SubmitHandler(tornado.web.RequestHandler):
 	    server = jenkins.Jenkins('http://jenkins.io/', username=username, password=password)
   	    server.build_job('common/deploy-swarm', params, token=password)
 	
-	    output += "Deployment submitted for tag " + params['GIT_COMMIT'] + " of " + params['SERVICE'] + " on " + params['DEPLOY_ENV'] + " environment<br><a href='http://jenkins.internal.aptitudelabs.com/job/SRKay/job/common/job/deploy-to-swarm/'>Check deployment job</a><br>"
+	    output += "Deployment submitted for tag " + params['GIT_COMMIT'] + " of " + params['SERVICE'] + " on " + params['DEPLOY_ENV'] + " environment<br><a href='http://jenkins.io/job/common/job/deploy-swarm/'>Check deployment job</a><br>"
 	except Exception as e:
 	    output += "Bad request. " + str(e)
 	output += "<br><a href='/'>Check tags</a> or <a href='http://status.system.yashsolutions.com'>Check status</a><br>"
@@ -88,7 +88,7 @@ class MainHandler(tornado.web.RequestHandler):
 
 	app_services = {}
 	sys_services = []
-	envs = ['qa', 'dev', 'stage', 'internal', 'prod']
+	envs = ['dev', 'stage', 'system', 'prod']
 	app_envs = []
         for service in services:
 	    info = {}
