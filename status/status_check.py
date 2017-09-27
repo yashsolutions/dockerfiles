@@ -9,7 +9,7 @@ import os
 while True:
     try:
         service_check = {}
-        r_server = redis.Redis(host='ansible.ip', db=2)
+        r_server = redis.Redis(host='internal-redis.ovmdvp.0001.use2.cache.amazonaws.com', db=2)
         services = []
         servers = ["prod-swarm-01.ip"] if "prod" == os.environ['DEPLOY_ENV'] else ["internal-swarm-01.ip"]
         for ip in servers:
