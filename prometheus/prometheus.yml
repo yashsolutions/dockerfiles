@@ -9,21 +9,6 @@ scrape_configs:
   - job_name: 'prometheus'
     scrape_interval: 5s
     static_configs:
-      - targets: ['ansible.ip:9100']
-        labels:
-          host: 'ansible'
-          group: 'control'
-          
-      - targets: ['bastion.ip:9100']
-        labels:
-          host: 'bastion'
-          group: 'expose'
-
-      - targets: ['gerrit.ip:9100']
-        labels:
-          host: 'gerrit'
-          group: 'control'
-
       - targets: ['internal-es-01.ip:9100']
         labels:
           host: 'internal-es-01'
@@ -32,11 +17,6 @@ scrape_configs:
       - targets: ['internal-es-02.ip:9100']
         labels:
           host: 'internal-es-02'
-          group: 'internal-es'
-
-      - targets: ['internal-es-03.ip:9100']
-        labels:
-          host: 'internal-es-03'
           group: 'internal-es'
           
       - targets: ['internal-swarm-01.ip:9100']
@@ -54,21 +34,6 @@ scrape_configs:
           host: 'internal-swarm-03'
           group: 'internal-swarm'
 
-      - targets: ['internal-swarm-04.ip:9100']
-        labels:
-          host: 'internal-swarm-04'
-          group: 'internal-swarm'
-
-      - targets: ['internal-swarm-05.ip:9100']
-        labels:
-          host: 'internal-swarm-05'
-          group: 'internal-swarm'
-          
-      - targets: ['internal-swarm-06.ip:9100']
-        labels:
-          host: 'internal-swarm-06'
-          group: 'internal-swarm'
-
       - targets: ['jenkins.ip:9100']
         labels:
           host: 'jenkins'
@@ -78,38 +43,3 @@ scrape_configs:
         labels:
           host: 'openldap'
           group: 'control'
-          
-      - targets: ['openvpn.ip:9100']
-        labels:
-          host: 'openvpn'
-          group: 'expose'
-
-      - targets: ['prod-es-01.ip:9100']
-        labels:
-          host: 'prod-es-01'
-          group: 'prod-es'
-
-      - targets: ['prod-es-02.ip:9100']
-        labels:
-          host: 'prod-es-02'
-          group: 'prod-es'
-
-      - targets: ['prod-es-03.ip:9100']
-        labels:
-          host: 'prod-es-03'
-          group: 'prod-es'
-          
-      - targets: ['prod-swarm-01.ip:9100']
-        labels:
-          host: 'prod-swarm-01'
-          group: 'prod-swarm'
-          
-      - targets: ['prod-swarm-02.ip:9100']
-        labels:
-          host: 'prod-swarm-02'
-          group: 'prod-swarm'
-          
-      - targets: ['prod-swarm-03.ip:9100']
-        labels:
-          host: 'prod-swarm-03'
-          group: 'prod-swarm'
