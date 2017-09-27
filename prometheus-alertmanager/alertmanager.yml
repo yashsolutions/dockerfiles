@@ -1,8 +1,8 @@
 global:
-  smtp_smarthost: 'smtp.sendgrid.net:25'
-  smtp_from: 'bot@srkay.com '
-  smtp_auth_username: 'azure_3bfa9aee4a3dd96c8568b0936f42320f@azure.com'
-  smtp_auth_password: 'friksl2t6l'
+  smtp_smarthost: 'email-smtp.us-east-1.amazonaws.com:25'
+  smtp_from: 'ashishn@yashsolutions.com'
+  smtp_auth_username: 'AKIAIM2GRP42TBFCQHSA'
+  smtp_auth_password: 'AgvPZarEdvA4BdzyOIdY5Nh5Ei70qQRZlogC7XqWtR9y'
 
 route:
   group_wait: 30s
@@ -12,4 +12,4 @@ route:
 receivers:
 - name: 'DevOps'
   email_configs:
-  - to: 'foram.kapadia@aptitudelabs.com'
+  - to: 'ashishn@yashsolutions.com'
