@@ -8,11 +8,12 @@ import jenkins
 import re
 from xml.etree import ElementTree
 
-username = 'ashish.nanotkar'
-password = '1561164d4c145077d7fd3aaeb5d2479e'
+username = 'ashishn'
+password = 'fb973c227b25fe23ceb3bbed31c7f111'
 
 class SubmitHandler(tornado.web.RequestHandler):
     def post(self):
+	output = '<img class="image-box-image-new" src="https://storage.googleapis.com/wzukusers/user-25377885/images/58918da884b2fVqQXMFG/Yash-Logo_d400.png" width="354" height="236" style="width: 200px;height: 150px;margin-top: -15px;margin-left: 0px;">'
 	try:
 	    param_string = self.get_argument('params')
       	    param_lines = param_string.split("\n")
@@ -20,22 +21,23 @@ class SubmitHandler(tornado.web.RequestHandler):
   	    params = {}
 	    for line in param_lines:
 		params[line.split('=')[0]] = ('='.join(line.split('=')[1:])).strip(" '\"\r\n")
-	    server = jenkins.Jenkins('http://jenkins.internal.aptitudelabs.com/', username=username, password=password)
-  	    server.build_job('SRKay/common/deploy-to-swarm', params, token=password)
+	    server = jenkins.Jenkins('http://jenkins.io/', username=username, password=password)
+  	    server.build_job('common/deploy-swarm', params, token=password)
 	
-	    output = "Deployment submitted for tag " + params['GIT_COMMIT'] + " of " + params['SERVICE'] + " on " + params['DEPLOY_ENV'] + " environment<br><a href='http://jenkins.internal.aptitudelabs.com/job/SRKay/job/common/job/deploy-to-swarm/'>Check deployment job</a><br>"
+	    output += "Deployment submitted for tag " + params['GIT_COMMIT'] + " of " + params['SERVICE'] + " on " + params['DEPLOY_ENV'] + " environment<br><a href='http://jenkins.internal.aptitudelabs.com/job/SRKay/job/common/job/deploy-to-swarm/'>Check deployment job</a><br>"
 	except Exception as e:
-	    output = "Bad request. " + str(e)
-	output += "<br><a href='/'>Check tags</a> or <a href='http://status.internal.aptitudelabs.com'>Check status</a><br>"
+	    output += "Bad request. " + str(e)
+	output += "<br><a href='/'>Check tags</a> or <a href='http://status.system.yashsolutions.com'>Check status</a><br>"
 	self.write(output)
 
 class DeployHandler(tornado.web.RequestHandler):
     def post(self):
-	output = "<a href='/'>Check tags</a> or <a href='http://status.internal.aptitudelabs.com'>Check status</a><br><br>"
+	output = '<img class="image-box-image-new" src="https://storage.googleapis.com/wzukusers/user-25377885/images/58918da884b2fVqQXMFG/Yash-Logo_d400.png" width="354" height="236" style="width: 200px;height: 150px;margin-top: -15px;margin-left: 0px;">'
+	output += "<a href='/'>Check tags</a> or <a href='http://status.system.yashsolutions.com'>Check status</a><br><br>"
 
 	success = True
 	try:
-		config = requests.get('http://jenkins.internal.aptitudelabs.com/job/SRKay/job/system/job/' + self.get_argument('service') + '/config.xml', auth=(username, password))
+		config = requests.get('http://jenkins.io/job/system/job/' + self.get_argument('service') + '/config.xml', auth=(username, password))
 		tree = ElementTree.fromstring(config.content)
 		param_lines = tree.findall('.//hudson.plugins.parameterizedtrigger.PredefinedBuildParameters/properties')[0].text.split("\n")
 		param_string = ""
@@ -50,7 +52,7 @@ class DeployHandler(tornado.web.RequestHandler):
 	    print e
 	    try:
 	
-		config = requests.get('http://jenkins.internal.aptitudelabs.com/job/SRKay/job/' + self.get_argument('service') + '/job/pipeline/config.xml', auth=(username, password))
+		config = requests.get('http://jenkins.io/job/' + self.get_argument('service') + '/job/pipeline/config.xml', auth=(username, password))
 		tree = ElementTree.fromstring(config.content)
 		m = re.findall('string\(name\:(.*)? value\:(.*)\)', tree.findall('.//script')[0].text)
 		param_string = ""
@@ -75,7 +77,7 @@ class DeployHandler(tornado.web.RequestHandler):
 class MainHandler(tornado.web.RequestHandler):
     def get(self):
 	services = []
-	output = ""
+	output = '<img class="image-box-image-new" src="https://storage.googleapis.com/wzukusers/user-25377885/images/58918da884b2fVqQXMFG/Yash-Logo_d400.png" width="354" height="236" style="width: 200px;height: 150px;margin-top: -15px;margin-left: 0px;">'
         try:
 	    for ip in ["internal-swarm-01.ip", "prod-swarm-01.ip"]:
 	            r = requests.get("http://" + ip + ":4243/services")
@@ -121,7 +123,7 @@ class MainHandler(tornado.web.RequestHandler):
 	
 	    app_services[info['name']][info['env']] = info
 
-	output += "<a href='http://status.internal.aptitudelabs.com'>Check service status</a><br><form method=post action='/deploy'>Deploy tag: <input type=text name=tag> of <select name=service>"
+	output += "<a href='http://status.system.yashsolutions.com'>Check service status</a><br><form method=post action='/deploy'>Deploy tag: <input type=text name=tag> of <select name=service>"
 	for name in app_services.keys():
 	    output += "<option vaule=\"" + name + "\">" + name + "</option>"
 	output += "</select> on <select name=env>"
