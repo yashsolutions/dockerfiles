@@ -18,7 +18,8 @@ class MainHandler(tornado.web.RequestHandler):
         except Exception as e:
             print e
 
-        output = "<table><tr><th style=\"white-space:nowrap;\">ServiceName</th>\
+        output = "<img class=\"image-box-image-new\" src=\"https://storage.googleapis.com/wzukusers/user-25377885/images/58918da884b2fVqQXMFG/Yash-Logo_d400.png\" width=\"354\" height=\"236\" style=\"width: 200px;height: 150px;margin-top: -15px;margin-left: 0px;\">\
+        <table><tr><th style=\"white-space:nowrap;\">ServiceName</th>\
         <th style=\"white-space:nowrap;\">Replicas</th><th>TargetPort</th>\
         <th style=\"white-space:nowrap;\">PublishedPort</th>\
         <th style=\"white-space:nowrap;\">OverlayIP</th>\
