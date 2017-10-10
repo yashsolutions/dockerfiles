@@ -15,7 +15,7 @@ title: Wiki
 # ---------------------------------------------------------------------
 # INCLUDE CLIENT PORT IF NOT 80/443!
 
-host: http://localhost
+host: http://wiki.system.yashsolutions.com
 
 # ---------------------------------------------------------------------
 # Port the main server should listen to (80 by default)
