@@ -109,7 +109,7 @@ sessionSecret: 1234567890abcdefghijklmnopqrstuvxyz
 # ---------------------------------------------------------------------
 # You can also use an ENV variable by using $ENV_VAR_NAME as the value
 
-db: mongodb://localhost:27017/wiki
+db: mongodb://wiki:wiki@wiki-shard-00-00-jfjir.mongodb.net:27017,wiki-shard-00-01-jfjir.mongodb.net:27017,wiki-shard-00-02-jfjir.mongodb.net:27017/test?ssl=true&replicaSet=wiki-shard-0&authSource=admin
 
 # ---------------------------------------------------------------------
 # Git Connection Info
