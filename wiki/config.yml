@@ -55,7 +55,7 @@ langRtl: false
 # Site Authentication
 # ---------------------------------------------------------------------
 
-public: false
+public: true
 
 auth:
   defaultReadAccess: false
