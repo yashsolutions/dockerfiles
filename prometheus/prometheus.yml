@@ -9,37 +9,12 @@ scrape_configs:
   - job_name: 'prometheus'
     scrape_interval: 5s
     static_configs:
-      - targets: ['internal-es-01.ip:9100']
+      - targets: ['192.168.185.6:9100']
         labels:
-          host: 'internal-es-01'
-          group: 'internal-es'
+          host: 'docker1'
+          group: 'docker'
 
-      - targets: ['internal-es-02.ip:9100']
+      - targets: ['192.168.185.3:9100']
         labels:
-          host: 'internal-es-02'
-          group: 'internal-es'
-          
-      - targets: ['internal-swarm-01.ip:9100']
-        labels:
-          host: 'internal-swarm-01'
-          group: 'internal-swarm'
-          
-      - targets: ['internal-swarm-02.ip:9100']
-        labels:
-          host: 'internal-swarm-02'
-          group: 'internal-swarm'
-          
-      - targets: ['internal-swarm-03.ip:9100']
-        labels:
-          host: 'internal-swarm-03'
-          group: 'internal-swarm'
-
-      - targets: ['jenkins.ip:9100']
-        labels:
-          host: 'jenkins'
-          group: 'control'
-          
-      - targets: ['openldap.ip:9100']
-        labels:
-          host: 'openldap'
-          group: 'control'
+          host: 'docker2'
+          group: 'docker'
