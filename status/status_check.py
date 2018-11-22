@@ -9,9 +9,9 @@ import os
 while True:
     try:
         service_check = {}
-        r_server = redis.Redis(host='internal-redis.ovmdvp.0001.use2.cache.amazonaws.com', db=2)
+        r_server = redis.Redis(host='192.168.185.4', db=2)
         services = []
-        servers = ["prod-swarm-01.ip"] if "prod" == os.environ['DEPLOY_ENV'] else ["internal-swarm-01.ip"]
+        servers = ["192.168.185.6"]
         for ip in servers:
             r = requests.get("http://" + ip + ":4243/services")
             services.extend(json.loads(r.text))
@@ -23,7 +23,7 @@ while True:
                 print e
                 service_name = 'unknown-service-' + str(counter)
 
-            host_ip = "prod-swarm-01.ip" if 'prod-' in service_name else "internal-swarm-01.ip"
+            host_ip = "192.168.185.6"
 
             try:
                 replicas = str(service['Spec']['Mode']['Replicated']['Replicas'])
