@@ -79,7 +79,7 @@ class MainHandler(tornado.web.RequestHandler):
 	services = []
 	output = '<img class="image-box-image-new" src="https://storage.googleapis.com/wzukusers/user-25377885/images/58918da884b2fVqQXMFG/Yash-Logo_d400.png" width="354" height="236" style="width: 200px;height: 150px;margin-top: -15px;margin-left: 0px;">'
         try:
-	    for ip in ["internal-swarm-01.ip", "prod-swarm-01.ip"]:
+	    for ip in ["192.168.185.6"]:
 	            r = requests.get("http://" + ip + ":4243/services")
         	    services.extend(json.loads(r.text))
             r_server = redis.Redis(host='ansible.ip', db=2)
