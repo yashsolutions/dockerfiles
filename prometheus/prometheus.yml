@@ -18,3 +18,13 @@ scrape_configs:
         labels:
           host: 'docker2'
           group: 'docker'
+
+      - targets: ['192.168.185.9:9100']
+        labels:
+          host: 'jenkins'
+          group: 'ci'
+          
+      - targets: ['192.168.185.14:9100']
+        labels:
+          host: 'elastic1'
+          group: 'elasticsearch'
