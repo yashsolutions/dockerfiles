@@ -9,12 +9,12 @@ import tornado.web
 class MainHandler(tornado.web.RequestHandler):
     def get(self):
         services = []
-        servers = ["prod-swarm-01.ip"] if "prod" == os.environ['DEPLOY_ENV'] else ["internal-swarm-01.ip"]
+        servers = ["192.168.185.6"]
         try:
             for ip in servers:
                 r = requests.get("http://" + ip + ":4243/services")
                 services.extend(json.loads(r.text))
-            r_server = redis.Redis(host='internal-redis.ovmdvp.0001.use2.cache.amazonaws.com', db=2)
+            r_server = redis.Redis(host='192.168.185.4', db=2)
         except Exception as e:
             print e
 
